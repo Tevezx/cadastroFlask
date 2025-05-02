@@ -8,6 +8,7 @@ app.config['SECRET_KEY'] =  'Tevez123'
 def home():
     #Definindo a tela default
     return render_template('login.html')
+   
 @app.route('/login', methods=['Post'])
 def login():
     #Pegando requisições do html
@@ -18,6 +19,9 @@ def login():
         usuarios = json.load(usuariosTemp)
         #Verificação se a senha corresponde com o usuario
         cont = 0
+        #Administradores
+        if nome == 'adm' and senha == '000':
+            return render_template('administrador.html')
         for usuario in usuarios:
             cont = cont + 1
             if usuario['nome'] == nome and usuario['senha'] == senha:
