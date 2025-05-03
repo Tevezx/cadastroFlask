@@ -53,7 +53,7 @@ def cadastro():
     with open('usuarios.json', 'w') as gravarTemp:
         #Adicionando o novo usuario no arquivo json
         json.dump(usuarioNovo, gravarTemp, indent=4)
-    return redirect('/cadastrar')
+    return redirect('/cadastro')
     
 if __name__ == '__main__':
     app.run(debug=True)
