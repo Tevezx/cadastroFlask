@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/administrador.css">
+    <link rel="stylesheet" href="../static/css/cadastro.css">
     <title>Home</title>
 </head>
 <body>
@@ -17,12 +17,13 @@
     <div id="form_fundo">
         <h1>Cadastrar</h1>
         <div id="form_frente">
-            <form action="/cadastrarUsuario" id="login" method="post">
+            <form action="/cadastrarUsuario" id="Cadastrar" method="post">
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" required placeholder="Digite seu nome"><br>
                 <label for="senha" id="senha">Senha</label>
                 <input type="password" name="senha" id="senha" required placeholder="Digite sua senha"><br>
                 <button type="submit" id="btn_login">Cadastrar</button>
+                <a href="/" id="btn_login">Voltar</a>
         </form>
         </div>
     </div>
