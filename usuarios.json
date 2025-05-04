@@ -1,8 +1,12 @@
 [
     {
-        "nome": "Carlos",
-        "senha": "tevez123"
+        "nome": "João",
+        "senha": "joao123"
     },
+    {
+        "nome": "Maria",
+        "senha": "maria123"
+    },  
     {
         "nome": "Ana",
         "senha": "ana123"

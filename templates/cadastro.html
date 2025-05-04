@@ -9,21 +9,26 @@
 <body>
     {% set menssagem = get_flashed_messages() %}
     {% if menssagem %}
-        <div class="flash_alerta">
+        <div class="text-danger">
             {{menssagem[0]}}
         </div>
     {% endif %}
 
-    <div class="container-fluid">"
-        <h1>Cadastrar</h1>
-        <div id="form_frente">
+    <div class="container-fluid">
+        <div class="card border-primary">
+            <div class="card-header bg-primary text-white">
+                <h1>Cadastro</h1>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Preencha os campos abaixo para criar uma conta</h5>
+                <p class="card-text">Ao criar uma conta, você concorda com nossos Termos de Serviço e Política de Privacidade.</p>
             <form action="/cadastrarUsuario" id="Cadastrar" method="post">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" required placeholder="Digite seu nome"><br>
-                <label for="senha" id="senha">Senha</label>
-                <input type="password" name="senha" id="senha" required placeholder="Digite sua senha"><br>
-                <button type="submit" id="btn_login">Cadastrar</button>
-                <p>Já tem uma conta? <a href="/">Entre aqui</a></p>
+                <label class="form-label" for="nome">Nome</label>
+                <input class="form-control" type="text" name="nome" required placeholder="Digite seu nome"><br>
+                <label class="form-label" for="senha" id="senha">Senha</label>
+                <input class="form-control" type="password" name="senha" id="senha" required placeholder="Digite sua senha"><br>
+                <button class="btn btn-outline-primary mb-2" type="submit">Cadastrar</button>
+                <p>Já tem uma conta? <a href="/" class="card-link">Entre aqui</a></p>
         </form>
         </div>
     </div>
