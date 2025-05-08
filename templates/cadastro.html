@@ -8,13 +8,6 @@
     <title>Home</title>
 </head>
 <body>
-    {% set menssagem = get_flashed_messages() %}
-    {% if menssagem %}
-        <div class="text-danger">
-            {{menssagem[0]}}
-        </div>
-    {% endif %}
-
     <div class="container-fluid">
         <div class="card border-primary">
             <div class="card-header bg-primary text-white">
@@ -24,10 +17,27 @@
                 <h5 class="card-title">Preencha os campos abaixo para criar uma conta</h5>
                 <p class="card-text">Ao criar uma conta, você concorda com nossos Termos de Serviço e Política de Privacidade.</p>
             <form action="/cadastrarUsuario" id="Cadastrar" method="post">
-                <i class="bi bi-person"></i><label class="form-label" for="nome">Nome</label>
-                <input class="form-control" type="text" name="nome" required placeholder="Digite seu nome"><br>
-                <i class="bi bi-lock"></i><label class="form-label" for="senha" id="senha">Senha</label>
-                <input class="form-control" type="password" name="senha" id="senha" required placeholder="Digite sua senha"><br>
+                <div>
+                    <i class="bi bi-person"></i>
+                    <label class="form-label" for="nome">Nome</label>
+                    <input class="form-control" type="text" name="nome" required placeholder="Digite seu nome"><br>
+                </div>
+                <div>
+                    <i class="bi bi-envelope"></i>
+                    <label class="form-label" for="email">E-mail</label>
+                    <input class="form-control" type="email" name="email" required placeholder="Digite seu email"><br>
+                </div>
+                <div>
+                    <i class="bi bi-lock"></i>
+                    <label class="form-label" for="senha" id="senha">Senha</label>
+                    <input class="form-control" type="password" name="senha" id="senha" required placeholder="Digite sua senha"><br>
+                </div>
+                {% set menssagem = get_flashed_messages() %}
+                {% if menssagem %}
+                    <div class="text-danger text-center">
+                        {{menssagem[0]}}
+                    </div>
+                {% endif %}
                 <button class="btn btn-outline-primary mb-2" type="submit">Cadastrar</button>
                 <p>Já tem uma conta? <a href="/" class="card-link">Entre aqui</a></p>
             </form>

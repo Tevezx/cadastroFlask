@@ -25,10 +25,16 @@
                 <p class="card-text">Ao fazer login, você concorda com nossos Termos de Serviço e Política de Privacidade.</p>
         <div id="form_frente">
             <form action="/login" id="login" method="post">
-                <i class="bi bi-person"></i><label class="form-label" for="nome">Nome</label>
-                <input type="text" name="nome" class="form-control" required placeholder="Digite seu nome"><br>
-                <i class="bi bi-lock"></i><label class="form-label" for="senha" id="senha">Senha</label>
-                <input type="password" name="senha" class="form-control" required placeholder="Digite sua senha"><br>
+                <div>
+                    <i class="bi bi-person"></i>
+                    <label class="form-label" for="nome">Nome</label>
+                    <input type="text" name="nome" class="form-control" required placeholder="Digite seu nome"><br>
+                </div>
+                <div>
+                    <i class="bi bi-lock"></i>
+                    <label class="form-label" for="senha" id="senha">Senha</label>
+                    <input type="password" name="senha" class="form-control" required placeholder="Digite sua senha"><br>
+                </div>
                 <button class="btn btn-outline-primary mb-2" type="submit" id="btn_login">Entrar</button>
                 <p>Não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
             </form>

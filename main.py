@@ -1,8 +1,11 @@
 from flask import Flask, render_template, redirect, request, flash
 import json
+import re
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] =  'Tevez123'
+
+email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
 
 @app.route('/')
 def home():
@@ -37,11 +40,23 @@ def cadastro():
     user = []
     #Pegando requisições do html
     nome = request.form.get('nome')
+    email = request.form.get('email')
     senha = request.form.get('senha')
     user = [{
         'nome': nome,
         'senha': senha
     }]
+
+    if len(nome) < 3:
+        flash('Nome deve conter 3 caracteres')
+        return redirect('/cadastro')  
+    
+    if not re.match(email_regex, email):
+        flash('Email inválido')
+
+    if len(senha) < 8:
+        flash('A senha deve conter no minimo 8 caracteres')
+        return redirect('/cadastro')
 
     #Abrindo o arquivo json no python  
     with open('usuarios.json') as usuariosTemp:
@@ -53,6 +68,7 @@ def cadastro():
     with open('usuarios.json', 'w') as gravarTemp:
         #Adicionando o novo usuario no arquivo json
         json.dump(usuarioNovo, gravarTemp, indent=4)
+        flash('Cadastro realizado com sucesso!')
     return redirect('/cadastro')
     
 if __name__ == '__main__':
