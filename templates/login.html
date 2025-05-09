@@ -8,13 +8,6 @@
     <title>Home</title>
 </head>
 <body>
-    {% set menssagem = get_flashed_messages() %}
-    {% if menssagem %}
-        <div class="flash_alerta">
-            {{menssagem[0]}}
-        </div>
-    {% endif %}
-
     <div class="container-fluid">
         <div class="card border-primary">
             <div class="card-header bg-primary text-white">
@@ -35,6 +28,12 @@
                     <label class="form-label" for="senha" id="senha">Senha</label>
                     <input type="password" name="senha" class="form-control" required placeholder="Digite sua senha"><br>
                 </div>
+                {% set menssagem = get_flashed_messages() %}
+                {% if menssagem %}
+                    <div class="text-danger text-center">
+                        {{menssagem[0]}}
+                    </div>
+                {% endif %}
                 <button class="btn btn-outline-primary mb-2" type="submit" id="btn_login">Entrar</button>
                 <p>Não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
             </form>

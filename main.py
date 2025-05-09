@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, flash
 import json
 import re
+import mysql.connector
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] =  'Tevez123'
@@ -22,18 +23,30 @@ def login():
     #Pegando requisições do html
     nome = request.form.get('nome')
     senha = request.form.get('senha')
-    #Abrindo o arquivo json no python
-    with open('usuarios.json') as usuariosTemp:
-        usuarios = json.load(usuariosTemp)
-        #Verificação se a senha corresponde com o usuario
-        cont = 0
-        for usuario in usuarios:
+
+    #Conexão com o banco de dados
+    connect_BD = mysql.connector.connect(host='localhost', database='banco_cadastro', user='root', password='Tevez1910#')
+    cont = 0
+    if connect_BD.is_connected():
+        print('Conectado ao banco de dados')
+        cursor = connect_BD.cursor()
+        cursor.execute('select * from usuario;')
+        usuariosBD = cursor.fetchall()
+
+        #Verificação se a senha corresponde com o usuario      
+        for usuario in usuariosBD:
             cont = cont + 1
-            if usuario['nome'] == nome and usuario['senha'] == senha:
+            usuarioNome = str(usuario[1])
+            usuarioSenha = str(usuario[3])
+            
+            if usuarioNome == nome and usuarioSenha == senha:
                 return render_template('usuario.html')
-            if cont >= len(usuarios):
-                flash('Usuario Invalido')
+            if cont >= len(usuariosBD):
+                flash('Usuario ou senha incorretos')
                 return redirect('/')
+        else:
+            flash('Usuario ou senha incorretos')
+            return redirect('/')
                 
 @app.route('/cadastrarUsuario', methods=['POST'])
 def cadastro():

@@ -1,6 +1,12 @@
 [
     {
-        "nome": "Carlos",
-        "senha": "12345678"
+        "id": 0,
+        "nome": "João",
+        "email": "joao@gmail.com"
+    },
+    {
+        "id": 1,
+        "nome": "Lucas",
+        "email": "lucas@gmail.com"
     }
 ]
