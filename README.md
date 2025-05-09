@@ -20,4 +20,4 @@ Este projeto é um **sistema de cadastro** desenvolvido com o framework **Flask*
 
 1. Clone este repositório para o seu computador:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/Tevezx/cadastroFlask.git
